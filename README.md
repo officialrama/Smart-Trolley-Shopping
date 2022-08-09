@@ -6,4 +6,4 @@ Tata Cara Penggunaan :  1.Mengambil barang belanjaan
                         4.Jika selesai belanja pilih konfirmasi pembayaraan pada LCD touchscreen
                         5.Lalu pilih pembayaran menggunakan scan qr code lalu scan qr code dengan smartphone
                         6.dan struk belanja akan keluar
-![image.png]( {https://github.com/officialrama/Smart-Trolley-Shopping/blob/main/Trolley/trolley.png} )
+![image.png]( {[https://github.com/officialrama/Smart-Trolley-Shopping/blob/main/Trolley/trolley.png](https://github.com/officialrama/Smart-Trolley-Shopping/blob/main/Trolley/trolley.png?raw=true)} )
