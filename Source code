@@ -1,0 +1,206 @@
+void drawButtons()
+{
+// Draw the lower row of buttons myGLCD.setTextSize(3); myGLCD.setColor(0, 0, 255);
+myGLCD.fillRoundRect (100, 170, 250, 230);
+//kiri atas, kiri bawah , kanan atas, kanan kanan myGLCD.setColor(255, 255, 255);
+myGLCD.drawRoundRect (100, 170, 250, 230);
+myGLCD.print("UP (+)", 120, 190);
+
+myGLCD.setColor(0, 0, 255);
+myGLCD.fillRoundRect (280, 170, 430, 230);
+myGLCD.setColor(255, 255, 255);
+myGLCD.drawRoundRect (280, 170, 430, 230);
+myGLCD.print("Down(-)", 300, 190);
+
+myGLCD.setColor(0, 0, 255);
+myGLCD.fillRoundRect (190, 240, 340, 300);
+myGLCD.setColor(255, 255, 255);
+myGLCD.drawRoundRect (190, 240, 340, 300);
+myGLCD.print("Enter", 220, 260);
+
+myGLCD.setBackColor (0, 0, 0);
+}
+void aktifasi() {
+digitalWrite(sentrum, HIGH);		// sentrum ON digitalWrite(l_biru, HIGH);	// buzzer ON digitalWrite(l_merah, LOW);	// lampu Merah ON digitalWrite(l_biru, HIGH);	// lampu biru OFF digitalWrite(l_hijau, HIGH);		// lampu hijau OFF
+}
+
+void initPrinter(){ int heatDot = 16; int heatTime = 200;
+int heatInterval = 80; char printDensity = 40; char printBreakTime = 2;
+ 
+
+
+
+mySerial.write(ASCII_ESC); mySerial.write(7); mySerial.write(heatDot); mySerial.write(heatTime); mySerial.write(heatInterval); mySerial.write(18); mySerial.write(35);
+int printSetting = (printDensity<<5) | printBreakTime;
+mySerial.write(printSetting); //Combination of printDensity and printBreakTime
+}
+
+void cetakln(String text){ mySerial.println(text); delay(100);
+}
+
+void cetak(String text){ mySerial.print(text); delay(100);
+}
+
+void rataTulis(char rat){ uint8_t pos = 0; switch(rat){
+case 'L': pos=0; break; case 'C': pos=1; break; case 'R': pos=2; break;
+}
+
+mySerial.write(ASCII_ESC);		//command mySerial.write(97);	//command
+mySerial.write(pos);	//command delay(50);
+}
+
+void lFeed(int l){ for(int x=0; x<l; x++){
+mySerial.write(ASCII_LF); delay(50);
+}
+}
+
+void fontSize(char val){ uint8_t sz;
+ 
+
+
+switch(val){
+default :	sz = 0x00;	break; case 'M' :		sz = 0x01;		break; case 'L' :		sz = 0x11;		break;
+}
+
+mySerial.write(ASCII_GS); mySerial.write('!'); mySerial.write(sz); delay(50);
+}
+
+#define TRIGGER_PIN	A1 #define ECHO_PIN	A2 #define MAX_DISTANCE 200
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); UTFTGLUE myGLCD(0x9486,A3,A2,A1,A0,A4);
+#define YP A3 #define XM A2 #define YM 9
+#define XP 8
+
+#define	TS_MINX	180
+#define	TS_MAXX	908
+#define	TS_MINY	185
+#define	TS_MAXY	950
+
+
+TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
+
+#include <NewPing.h>
+
+#include <Adafruit_GFX.h> #include <UTFTGLUE.h> #include <TouchScreen.h>
+//=========================
+=
+#define TRIGGER_PIN	A1 #define ECHO_PIN	A2 #define MAX_DISTANCE 200 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); UTFTGLUE myGLCD(0x9486,A3,A2,A1,A0,A 4);
+#define	YP	A3
+#define	XM	A2
+#define	YM	9
+#define	XP	8
+#define	TS_MINX	180
+#define	TS_MAXX	908
+#define	TS_MINY	185
+#define	TS_MAXY	950
+
+
+TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
+
+delay(50); Serial.print("Ping: "); Serial.print(sonar.ping_c m());
+Serial.println("cm");
+ 
+
+
+
+void drawButtons()
+{
+// Draw the lower row of buttons
+myGLCD.setTextSize(3); myGLCD.setColor(0, 0,
+255);
+myGLCD.fillRoundRect (100, 170, 250, 230);
+//kiri atas, kiri bawah , kanan atas, kanan kanan
+myGLCD.setColor(255, 255, 255);
+myGLCD.drawRoundRect (100, 170, 250, 230);
+myGLCD.print("UP (+)", 120, 190);
+
+myGLCD.setColor(0, 0,
+255);
+myGLCD.fillRoundRect (280, 170, 430, 230);
+myGLCD.setColor(255, 255, 255);
+myGLCD.drawRoundRect (280, 170, 430, 230);
+myGLCD.print("Down(-)", 300, 190);
+
+myGLCD.setColor(0, 0,
+255);
+myGLCD.fillRoundRect (190, 240, 340, 300);
+myGLCD.setColor(255, 255, 255);
+myGLCD.drawRoundRect (190, 240, 340, 300);
+myGLCD.print("Enter", 220, 260);
+
+myGLCD.setBackColor (0,
+0, 0);
+}
+ 
+
+void aktifasi() { digitalWrite(sentrum,
+HIGH);	// sentrum ON digitalWrite(l_biru,
+HIGH);	// buzzer ON digitalWrite(l_merah,
+LOW);	// lampu Merah ON digitalWrite(l_biru,
+HIGH);	// lampu biru OFF digitalWrite(l_hijau,
+HIGH);	// lampu hijau OFF
+}
+
+void initPrinter(){ int heatDot = 16; int heatTime = 200;
+int heatInterval = 80; char printDensity =
+40;
+char printBreakTime = 2;
+
+
+mySerial.write(ASCII_ESC
+);
+mySerial.write(7); mySerial.write(heatDot);
+mySerial.write(heatTime)
+;
+
+mySerial.write(heatInter val);
+mySerial.write(18); mySerial.write(35); int printSetting =
+(printDensity<<5) | printBreakTime;
+
+mySerial.write(printSett ing); //Combination of printDensity and printBreakTime
+ 
+}
+
+void cetakln(String text){
+
+mySerial.println(text); delay(100);
+}
+
+void cetak(String text){ mySerial.print(text); delay(100);
+}
+
+void rataTulis(char rat){
+uint8_t pos = 0; switch(rat){
+case 'L': pos=0; break;
+case 'C': pos=1; break;
+case 'R': pos=2; break;
+}
+
+
+mySerial.write(ASCII_ESC
+);	//command mySerial.write(97);
+//command mySerial.write(pos);
+//command delay(50);
+}
+
+void lFeed(int l){ for(int x=0; x<l;
+x++){
+
+mySerial.write(ASCII_LF)
+;
+delay(50);
+}
+}
+
+void fontSize(char val){
+ 
+uint8_t sz; switch(val){
+default :	sz = 0x00;	break;
+case 'M' :	sz = 0x01;	break;
+case 'L' :	sz = 0x11;	break;
+}
+
+
+mySerial.write(ASCII_GS)
+;
+mySerial.write('!'); mySerial.write(sz); delay(50);
+}
